@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDRP-Safe Spreadsheet Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background-color: #6200ea;
+            color: white;
+        }
+        
+        button:hover {
+            background-color: #3700b3;
+        }
+        
+        .gdpr-panel {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .spreadsheet-area {
+            width: calc(100% - 320px);
+            min-height: 600px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #f9f9f9;
+        }
+        
+        .ai-assist-btn {
+            background-color: #00c853;
+        }
+        
+        .consent-badge {
+            background-color: #ffeb3b;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        
+        .data-protection-info {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Spreadsheet Editor</h1>
+            <span class="consent-badge">GDPR Compliant Mode Active ✓</span>
+        </div>
+        
+        <div class="toolbar">
+            <button onclick="saveData()">Save (Encrypted)</button>
+            <button onclick="exportData()">Export Anonymized</button>
+            <button onclick="deleteRight()">&gt;&gt; Delete Right Request</button>
+            <button class="ai-assist-btn" onclick="askAI()">AI Analysis</button>
+        </div>
+        
+        <div style="display: flex;">
+            <div class="spreadsheet-area">
+                <table id="grid">
+                    <tr><th>ID</th><th>Name</th><th>Email</th><th>Data Collected</th></tr>
+                    <tr>
+                        <td>001</td>
+                        <td>[Anonymized]</td>
+                        <td>[Consent Required]</td>
+                        <td>
+                            <input type="checkbox" checked> Processing<br>
+                            <small>Consent valid until: Dec 2026</small>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="gdpr-panel">
+                <h3>Data Protection Controls</h3>
+                
+                <div class="data-protection-info">
+                    <strong>Processing Basis:</strong><br>
+                    <select id="legalBasis">
+                        <option>Consent</option>
+                        <option>Contract Performance</option>
+                        <option>Legal Obligation</option>
+                        <option>Vital Interest</option>
+                        <option>Public Task</option>
+                        <option>Legitimate Interest</option>
+                    </select>
+                    
+                    <hr>
+                    
+                    <strong>Retention Period:</strong><br>
+                    <input type="date" id="retentionDate">
+                    <br><small>Auto-deletion enabled</small>
+                    
+                    <hr>
+                    
+                    <strong>AIClassified Data:</strong><br>
+                    <div id="classificationDisplay"></div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h4>User Rights Quick Actions</h4>
+                    <button onclick="requestAccess()" style="width: 100%; margin-bottom: 8px;">&gt;&gt; Access Request</button>
+                    <button onclick="requestRectification()" style="width: 100%;">&gt;&gt; Rectify Errors</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample JavaScript functions
+        function saveData() {
+            alert("Data encrypted at rest before saving");
+        }
+        
+        function exportData() {
+            alert("Exported data will be anonymized per GDPR Art. 89");
+        }
+        
+        function deleteRight() {
+            const confirmed = confirm("Proceed with right-to-be-forgotten deletion?");
+            if (confirmed) {
+                console.log("Deletion process initiated across all storage");
+            }
+        }
+        
+        function askAI() {
+            alert("AI analysis will run on pseudonymized data only");
+        }
+        
+        function requestAccess() {
+            alert("Generating machine-readable data copy (Art. 20)");
+        }
+        
+        function requestRectification() {
+            alert("Submit correction request through secure channel");
+        }
+    </script>
+</body>
+</html>
